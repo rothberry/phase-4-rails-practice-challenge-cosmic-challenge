@@ -14,11 +14,11 @@ RSpec.describe "Missions", type: :request do
     context 'with valid data' do
       let!(:mission_params) {{name: "Project Terraform", scientist_id: Scientist.first.id, planet_id: Planet.second.id}}
 
-      it 'creates a new Mission' do
+      xit 'creates a new Mission' do
         expect { post '/missions', params: mission_params}.to change(Mission, :count).by(1)
       end
 
-      it 'returns the associated Planet data' do
+      xit 'returns the associated Planet data' do
         post '/missions', params: mission_params
         expect(response.body).to include_json({
           id: a_kind_of(Integer),
@@ -29,7 +29,7 @@ RSpec.describe "Missions", type: :request do
         })
       end
 
-      it 'returns a status code of 201 (created)' do
+      xit 'returns a status code of 201 (created)' do
         post '/missions', params: mission_params
 
         expect(response).to have_http_status(:created)
